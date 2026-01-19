@@ -1,0 +1,34 @@
+What are your expectations for this course " Advanced Software Development"?
+
+In this course I expect to learn industry best practice for many of the higher level processes 
+that go into developing software. I look forward to learning more about best practices for unit 
+testing, and I am especially excited for the case study about the CI/CD pipeline. 
+
+How familiar are you with Computer Science, and Advanced Software Development concepts? 
+
+I am quite familiar with computer science and software development concepts. I was a computer 
+science major for the first two years of my undergraduate experience, where I took several 
+courses in C++, operating systmes, networking principles, etc. Some personal circumstances at 
+the time led me to changing my major to education, and I graduated with a degree in Educational 
+Studies, but I've continued my software development education my own time and through this 
+degree. I've built personal projects in Go, TypeScript/JavaScript, C/C++, and python. These 
+range from projects in C that directly control Arduino hardware to my full-stack web 
+development project that is my personal website (at https://jdeko.me).
+
+Describe your current work experience. 
+
+I currently work as the Systems Specialist for SLU's office of Student Financial Services. I 
+describe this role sort a step between a business analyst and a systems admin. Most of my time 
+goes to writing SQL reports for our financial aid processes that eventually end up as 
+Tableau/PowerBI reports, but I also work closely with the IT department on developing 
+automation workflows, Python scripting, database updates, etc. The next job I search for, 
+however, will be a strictly technical role, preferably as a software developer or systems 
+admin. 
+
+Are you planning in taking any Information Systems Certifications? Would you like to get more 
+information on Certifications and Career Path?
+
+I do not currently have plans to take any Information Systems Certifications, but I am very 
+interested in getting more information on any that are available. My primary career path goal 
+would be to work as a software developer, but I also have interest in Linux systems 
+administration, Postgres or Oracle database administration or devops.

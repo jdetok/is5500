@@ -1,0 +1,13 @@
+# wk 1 discussion
+
+Considering the topics covered this week, such as the nature of software, the definition of software engineering, software application domains, the legacy of software, the process framework, and software engineering practice, discuss the following questions:
+
+How has the evolution of software impacted various industries and application domains over the past 60 years? Provide examples to support your points.
+Discuss the challenges and importance of maintaining and updating legacy software in today's fast-paced technological landscape. How can software engineering practices help address these challenges?
+
+
+The software industry has evolved arguably as much as any other over the last 60 years. 60 years ago in the late 1960s computer scientests were working on building some of the software and tools, like the UNIX operating system and the C programming language, that now serve as the foundation of so much of what modern software engineering is built on.Those working as software engineers 60 years ago were writing exclusively what we now consdier to be very low-level programs/systems that required extensive knowledge of the inner-workings of the hardware (CPU architecture) they intended to run their programs. Countless new programming languages, technologies, and tools have been developed since that make the work of the average software engineer today much higher-level, with less emphasis on specific knowledge of hardware. 
+
+The evolution of software over the last 60 years has resulted in the evolution of virtually every other industry with it. It's not a hot take to point out that essentially everything we do today, whether it be requesting a prescription refill or watching our favorite sports teams, involves some sort of interaction with software. Whether this is seen as a good or bad thing heavily varies from person to person, but the amount software has changed our day-to-day lives is immeasurable. 
+
+The speed at which the software engineering industry evolves means much of the early software that was developed has become outdated and is now considered legacy software. Many large systems, especially in sensitive industries like banking, education, and government, are run on a significant amount of legacy code. It's incredibly important that this code is either maintained or updated/rebuilt; legacy code can quickly become vulnerable to security exploits if left unmaintained. This can become difficult to achieve as legacy codebases grow older and skilled programmers in their languages become more niche.
