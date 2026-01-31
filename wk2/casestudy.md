@@ -13,3 +13,11 @@ Your case study should be well-structured, thoroughly researched, and profession
 The goal of this assignment is for you to develop a deeper understanding of agile methodologies, and how they can be applied in real-world software development projects to address challenges and improve outcomes. 
 
 Deliverable: Your case study should be 2-3 pages in length. 
+
+# RESOURCES: 
+
+https://www.smartsheet.com/content/agile-project-management-examples?srsltid=AfmBOoqZ_dWO1q0XRkTwryM-XrNeLTZAB3SU-Y87xqE1iMd4-gnGk29G
+
+https://blog.crisp.se/wp-content/uploads/2012/11/SpotifyScaling.pdf
+
+https://productschool.com/blog/product-fundamentals/spotify-model-scaling-agile

@@ -1,0 +1,76 @@
+' Justin DeKock IS5500 Week 3 assignment 3.2.3 "Create a UML diagram"
+
+' Imagine you are tasked with creating a Network Video Recording software (NVR). 
+' The software runs on a dedicated piece of hardware that you would connect to your local network. 
+' The software is responsible for exposing the underlying features of the hardware to the user. 
+' The hardware has the ability to connect cameras that follow the Real Time Streaming Protocol (RTSP). 
+' We allow multiple users to access the hardware via Viewer accounts, but we only allow one Admin account.
+
+' For this assignment, you are to create a UML sequence flow using the program of your choosing, 
+' to illustrate the initial design architecture decisions that would need to be accounted for when 
+' beginning development. Whether you choose to use LucidChart, Illustrator, Figma, a pen and paper, 
+' or another tool, your submission will be in PDF form. 
+
+' PLANTUML SOURCE CODE
+@startuml nvr
+title Accessing IP Cameras with Nework Video Recording Application | Justin DeKock via PlantUML
+
+!pragma teoz true
+!pragma sequenceMessageSpan true
+
+actor Viewer as vu
+actor Admin as au
+participant "NVR Application" as app
+participant "2FA" as auth
+participant "Video Console" as vc
+participant "Admin Console" as adc
+entity "IP Camera" as ipc
+
+' view camera feed
+vu -> app ++ #98a9ad : Request to view camera feed
+    activate auth #Orange
+        app -> auth #98a9ad : Authenticate User
+        auth -> vu #eee274 : 2FA request sent to user
+        vu -> auth : User response
+        alt #IndianRed Invalid or missing 2FA Response
+            auth -> app : Authentication failed
+            app -x vu : Login failed
+        else #SeaGreen Valid 2FA Response
+            auth -> app : 2FA Success
+        end
+    deactivate auth
+
+    app -> vc ++ #98a9ad : Launch video console
+        note right
+            RTSP: Real Time Streaming Protocol
+        end note
+        vc -> ipc ++ #98a9ad : Start RTSP feed
+        return Video data over IP
+    return Rendered video data
+return Real time video feed
+
+' access admin console
+au -> app ++ #98a9ad : Request to use admin console
+    note right
+        ONLY ONE ADMIN ACCOUNT CAN EXIST 
+    end note
+
+    activate auth #Orange
+        app -> auth #98a9ad : Authenticate User
+        auth -> au #eee274 : 2FA request sent to user
+        au -> auth #eee274 : User response
+        alt #IndianRed Invalid or missing 2FA Response
+            auth -> app : 2FA Failure
+            app -x au : Admin login failed
+        else #SeaGreen Valid 2FA Response
+            auth -> app : 2FA Success
+        end
+    deactivate auth
+
+    app -> adc ++ #98a9ad : Authenticated admin session    
+        adc -> ipc ++ #98a9ad : Admin login to camera
+        return Camera filesystem access
+    return Application access to camera settings
+return Admin console access
+
+@enduml
