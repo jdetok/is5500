@@ -1,0 +1,94 @@
+@startuml cloud_native_arch
+
+title Cloud Native Online Course Platform with AWS and Kubernetes
+
+cloud "Cloud Provider" {
+    [AWS API] as aws
+}
+
+node "Kubernetes Cluster: AWS EC2" {
+    node "Control Plane (Master Node)" {
+        [kube-apiserver] as api
+        [cloud-controller-manager] as ccm
+        aws <.down.> ccm
+        ccm <.down.> api
+    }
+    node "Worker Node A" {
+        [kubelet] as kl
+        [k-proxy] as kp
+        api -down-> kl
+        api -down-> kp
+
+        [Container Runtime] as ctr
+        kl -down-> ctr
+        kp -down-> ctr   
+        node "Pod 1" {
+            [Frontend] as fc
+            ctr -left-> fc
+        } 
+        node "Pod 2" {
+            [Backend] as bc
+            ctr -down-> bc
+            bc <.up.> fc
+        }
+        node "Pod 3" {
+            [Logger] as lc
+            ctr -down-> lc
+            [Monitoring] as pc
+            ctr -down-> pc
+        } 
+    }
+    node "Worker Node B" {
+        [kubelet] as kl2
+        [k-proxy] as kp2
+        api -down-> kl2
+        api -down-> kp2
+
+        [Container Runtime] as ctr2
+        kl2 -down-> ctr2
+        kp2 -down-> ctr2    
+
+        node "Pod 4" {
+            [Frontend] as fc2
+            ctr2 -right-> fc2   
+        }
+
+        node "Pod 5" {
+            [Backend] as bc2
+            ctr2 -down-> bc2
+            bc2 <.up.> fc2
+        }
+        
+        node "Pod 6" {
+            [Logger] as lc2
+            ctr2 -down-> lc2
+            [Monitoring] as pc2
+            ctr2 -down-> pc2
+        } 
+    }
+}
+
+node "Persisted Storage: AWS S3" {
+    database "Data Bucket" {
+        [Course Data] as cd
+        [Student Data] as sd
+    }
+    database "Logging Bucket" {
+        [Runlogs] as rl
+        [Performance Data] as pd
+    }
+}
+
+cd <.up.> DataSubnet
+sd <.up.> DataSubnet
+DataSubnet <.up.> bc
+DataSubnet <.up.> bc2
+
+rl <.up.> LogSubnet
+pd <.up.> LogSubnet
+LogSubnet <.up.> lc
+LogSubnet <.up.> lc2
+LogSubnet <.up.> pc
+LogSubnet <.up.> pc2
+
+@enduml
