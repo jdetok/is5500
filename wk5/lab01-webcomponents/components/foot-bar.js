@@ -5,9 +5,9 @@ export class FootBar extends HTMLElement {
         super();
         
         this.links = [
-            { lbl: "Contact me at my SLU Email", href: "mailto:justin.dekock@slu.edu" },
-            { lbl: "My Professional Resume", href: "https://jdeko.me/resume/cv/" },
-            { lbl: "View my LinkedIn", href: "https://www.linkedin.com/in/justin-dekock-257879185" },
+            { lbl: "Contact me at my SLU Email", short: "Email", href: "mailto:justin.dekock@slu.edu" },
+            { lbl: "My Professional Resume", short: "Resume", href: "https://jdeko.me/resume/cv/" },
+            { lbl: "View my LinkedIn", short: "LinkedIn", href: "https://www.linkedin.com/in/justin-dekock-257879185" },
         ];
 
         this.attachShadow({ mode: 'open' });

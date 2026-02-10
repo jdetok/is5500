@@ -5,11 +5,10 @@ export class HeadBar extends HTMLElement {
         super();
         
         this.links = [
-            { lbl: "Justin DeKock: M.S. Information Systems"},
-            { lbl: "Saint Louis University"},
-            { lbl: "IS-5500: Advanced Software Development" },
-            { lbl: "Instructor: Greg Langston" },
-            { lbl: "Lab 01: Web Components" },
+            { lbl: "Justin DeKock: M.S. Information Systems", short: "Justin DeKock" },
+            { lbl: "Saint Louis University", short: "SLU" },
+            { lbl: "IS-5500: Advanced Software Development", short: "IS-5500" },
+            { lbl: "Lab 01: Web Components", short: "Lab 01" },
         ];
 
         this.attachShadow({ mode: 'open' });
