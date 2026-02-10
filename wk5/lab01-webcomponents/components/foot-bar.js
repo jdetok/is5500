@@ -15,19 +15,20 @@ export class FootBar extends HTMLElement {
         this.shadowRoot.append(this.build_content(), this.add_styling());
     }
     build_content() {
-        return objects_as_div(this.links);
+        this.ftr = document.createElement('footer');
+        this.ftr.part = "ftr";
+        this.ftr.appendChild(objects_as_div(this.links));
+        return this.ftr 
     }
     add_styling() {
         let style = document.createElement('style');
         style.textContent = `
-            div {
+            div, [part="ftr"] {
                 display: grid;
                 grid-auto-columns: 1fr;
                 grid-auto-flow: column;
             }
             div > * {
-                // color: darkgreen;
-                padding: 10px;
                 margin: 0 auto;
             }
         `;

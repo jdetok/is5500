@@ -25,7 +25,7 @@ export function objects_as_div(objects, part = "") {
         }
         div.appendChild(el);
     }
-    return div;
+    return div; 
 }
 
 function change_label_from_width(event, el, obj) {
