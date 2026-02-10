@@ -1,3 +1,46 @@
-h1 {
-    color: red;
+:root {
+    --page_height: 99vh;
+    --bg_color: rgb(145, 202, 255);
+    --txt_color: rgb(16, 1, 28);
+    --btn_color: rgb(205, 184, 126);
+    --blk_1px: 1px solid black;
+    --blk_2px: 2px solid black;
+    --blk_5px: 5px solid black;
+    --sml: .5rem;
+    --med: 1rem;
+    --lrg: 1.5rem;
+    --lrg2: 2rem;
+    --btn_curve: 2rem;
+    --objs_curve: 1rem;
+    --pdg: .5rem;
+}
+
+body {
+    display: grid;
+    min-height: var(--page_height);
+    grid-template-rows: auto 1fr auto;
+}
+
+fav-sites::part(btn) {
+    border-radius: var(--btn_curve);
+    background: var(--btn_color);
+}
+
+fav-sites::part(ttl) {
+    color: var(--txt_color);
+    font-size: var(--lrg2);
+    display: flex;
+    flex-direction: row;
+}
+
+fav-sites::part(outer) {
+    border: var(--blk_5px);
+    border-radius: var(--objs_curve); 
+    margin: 0 auto;
+    /* max-width: fit-content; */
+}
+
+fav-sites::part(site) {
+    border: var(--blk_1px);
+    padding: var(--pdg);
 }
