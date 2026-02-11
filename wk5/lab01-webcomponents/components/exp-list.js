@@ -31,7 +31,7 @@ export class ExpandableList extends HTMLElement {
     make_ttl() {
         this.ttl = document.createElement('div');
         this.ttl.part = 'ttl';
-        this.ttl.innerHTML=`<slot></slot>`
+        this.ttl.innerHTML = `<slot></slot>`;
         this.ttl.appendChild(this.make_expand_collapse_btn());
         return this.ttl;
     }
