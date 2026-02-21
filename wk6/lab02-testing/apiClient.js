@@ -1,4 +1,5 @@
-const URL = "https://jsonplaceholder.typicode.com/users";
+export const URL = "https://jsonplaceholder.typicode.com/users";
+
 export async function fetchUsers() {
     try {
         return await fetch(URL).then((r) => r.json());
@@ -10,30 +11,27 @@ export async function fetchUserById(id) {
         return { id: user.id, name: user.name, email: user.email };
     } catch(e) { throw new Error(`failed to fetch user with ID ${id}: ${e}`) }
 }
-export async function createUser() {
+export async function createUser(user) {
     try {
         return await fetch(URL, {
             method: 'POST',
-            body: JSON.stringify({
-                name: 'Justin DeKock', username: 'jdeto', email: 'test'
-            }),
+            body: JSON.stringify(user),
             headers: { 'Content-Type': 'application/json: charset=UTF-8' }
         }).then((r) => r.json())
     } catch(e) { throw new Error(`failed to create user: ${e}`) }
 }
-export async function updateUser(id) {
+export async function updateUser(id, updates) {
     try {
         return await fetch(`${URL}/${id}`, {
             method: 'PATCH',
-            body: JSON.stringify({
-                name: 'New Name', username: 'newname',
-            }),
+            body: JSON.stringify(updates),
             headers: { 'Content-Type': 'application/json; charset=UTF-8' }
         }).then((r) => r.json())
     } catch(e) { throw new Error(`failed to update user with ID ${id}: ${e}`) }
 }
 export async function deleteUser(id) {
     try {
-        return await fetch(`${URL}/${id}`, {method: 'DELETE'}).then((r) => r.status);
+        const res = await fetch(`${URL}/${id}`, { method: 'DELETE' });
+        return res.ok;
     } catch(e) { throw new Error(`failed to delete user with ID ${id}: ${e}`) }
 }
