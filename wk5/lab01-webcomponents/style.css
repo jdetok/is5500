@@ -2,7 +2,7 @@
     --page_height: 99vh;
     --bg_color: rgb(145, 202, 255);
     --txt_color: rgb(16, 1, 28);
-    --btn_color: rgb(205, 184, 126);
+    --btn_color: rgba(182, 82, 82, 0.672);
     --blk_1px: 1px solid black;
     --blk_2px: 2px solid black;
     --blk_5px: 5px solid black;
@@ -17,30 +17,48 @@
 
 body {
     display: grid;
-    min-height: var(--page_height);
     grid-template-rows: auto 1fr auto;
+    min-height: var(--page_height);
 }
 
-fav-sites::part(btn) {
+.lists {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: var(--sml);
+    height: min-content; /* DO NOT REMOVE */
+}
+.lists > exp-list {
+    width: 100%;
+}
+
+@media (max-width: 790px) {
+    .lists {
+        grid-auto-flow: row;
+        grid-template-columns: 1fr;
+    }
+}
+
+exp-list::part(btn) {
+    font-size: var(--sml);
     border-radius: var(--btn_curve);
     background: var(--btn_color);
 }
 
-fav-sites::part(ttl) {
+exp-list::part(ttl) {
     color: var(--txt_color);
     font-size: var(--lrg2);
     display: flex;
     flex-direction: row;
 }
 
-fav-sites::part(outer) {
+exp-list::part(outer) {
     border: var(--blk_5px);
     border-radius: var(--objs_curve); 
     margin: 0 auto;
-    /* max-width: fit-content; */
 }
 
-fav-sites::part(site) {
+exp-list::part(item) {
     border: var(--blk_1px);
     padding: var(--pdg);
 }

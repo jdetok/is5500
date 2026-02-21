@@ -1,0 +1,15 @@
+{
+  "name": "lab02-testing",
+  "version": "1.0.0",
+  "description": "IS5500 week 6 testing lab",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js"
+  },
+  "dependencies": {
+    "jest": "^25.0.0"
+  }
+}
