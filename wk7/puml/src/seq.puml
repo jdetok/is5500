@@ -1,32 +1,36 @@
 @startuml cicd
-title CI/CD Pipeline for a TypeScript Node Application
+title CI/CD Pipeline for a Node Application
 
-participant Developer as dev
-participant Github as repo
+participant "Developer\nlocal branch" as dev
+participant "Github\nmain branch" as repo
 participant "Github\nActions" as act
-participant Staging as stage
-participant "Production\nServer(s)" as prod
-participant Team as team
+participant "Deploy\nStaging" as stage
+participant "Artifact\nRepo" as store
+participant "Production\nServer" as prod
+participant "Slack\nTeam" as team
 
 == Pipeline Trigger ==
 dev -> repo : Open pull request\nor push code to\nmain branch
 repo -> act: Trigger CI/CD pipeline
 == Setup testing environment once ==
-act -> act : Build node container
+act -> act : Build node\ntesting container
 act -> act : Install npm deps
-act -> act : Transpile/bundle code
-== Quality checks ==
+act -> act : Transpile/bundle\nbranch
+== Automated quality checks / test suite ==
 act -> act : Lint codebase
-== Automated test suite (Parallel) ==
 act -> act : Unit testing
 act -> act : Integration testing
-== Success case: All tests pass ==
-act -> repo : Allow merge\nand close PR
-act -> stage : Push to staging
-stage -> prod : Deploy changes\nto production
-act -> team : Notify team of successful push
-== Failure case: Any test fails ==
-act -> repo : Block merge\nand close PR
-act -> team : Notify team of failed push\nwith link to logs
-
+group  #ff7474 Any test fails
+    act -> repo : Block merge\nand close PR
+    act -> team : Notify team of failed push\nwith link to logs
+end
+group #54b173 All tests pass
+    act -> repo : Allow merge\nand close PR
+    act -> stage : Push to staging
+end
+== Build and deploy ==
+stage -> store : Build prod\ncontainers
+stage -> stage : Manual checks\n(if applicable)
+stage -> prod : Deploy changes
+act -> team : Notify team of successful deployment
 @enduml
