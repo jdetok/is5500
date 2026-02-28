@@ -1,0 +1,32 @@
+@startuml cicd
+title CI/CD Pipeline for a TypeScript Node Application
+
+participant Developer as dev
+participant Github as repo
+participant "Github\nActions" as act
+participant Staging as stage
+participant "Production\nServer(s)" as prod
+participant Team as team
+
+== Pipeline Trigger ==
+dev -> repo : Open pull request\nor push code to\nmain branch
+repo -> act: Trigger CI/CD pipeline
+== Setup testing environment once ==
+act -> act : Build node container
+act -> act : Install npm deps
+act -> act : Transpile/bundle code
+== Quality checks ==
+act -> act : Lint codebase
+== Automated test suite (Parallel) ==
+act -> act : Unit testing
+act -> act : Integration testing
+== Success case: All tests pass ==
+act -> repo : Allow merge\nand close PR
+act -> stage : Push to staging
+stage -> prod : Deploy changes\nto production
+act -> team : Notify team of successful push
+== Failure case: Any test fails ==
+act -> repo : Block merge\nand close PR
+act -> team : Notify team of failed push\nwith link to logs
+
+@enduml
