@@ -1,0 +1,8 @@
+There are a variety of testing strategies that can be employed in software development. Please discuss the value of unit, integration, and end to end tests in the software development life cycle.
+What are the areas of focus for each of the three tiers of testing and what are some of the trade offs associated with each?
+Once a testing suite is in place for a given piece of software, what are some overall strategies that incorporate all of the phases of testing and what are some benefits and drawbacks of of each strategy?
+
+
+# response
+
+Testing is a vital aspect of the software development process. Unit, integration, and end-to-end tests each test different areas of a piece of software. Unit tests are small and quick, designed to test a specific unit of a larger piece of software in isolation. Unit tests are excellent for testing small functions with expected behaviors, but offer little indication toward the broader operation of the software. End to end tests serve the opposite end of the spectrum, as they are designed to test the software's functionality as a whole. These simulate journies a real user might take, and aim to test as much of the functionality as possible. Integration tests live somewhere in the middle of unit and end to end tests; they typically are designed to test how individual modules interact with each other. These are particularly useful for testing things like database modules, external libraries, etc. 
